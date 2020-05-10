@@ -1,6 +1,12 @@
 import styled from 'styled-components';
 
+export const Wrap = styled.div`
+  background: rgba(123, 154, 61, 0.7);
+  height: 100vh;
+`;
+
 export const Container = styled.div`
+  background: rgba(223, 232, 227, 0.8);
   width: 70%;
   text-align: center;
   margin: auto;
@@ -9,6 +15,8 @@ export const Container = styled.div`
 
 export const Title = styled.h2`
   color: rgb(25, 41, 31);
+  margin-top: 0;
+  padding-top: 15px;
 `;
 
 export const Body = styled.p`

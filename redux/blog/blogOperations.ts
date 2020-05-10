@@ -1,25 +1,25 @@
 import * as blogAction from '../blog/blogActions';
 import * as API from '../../services/api';
-import * as moduleTypes from '../../types/types';
+import { Dynamic, Post } from '../../types/types';
 
 export const getPosts = () => (dispatch): void => {
   dispatch(blogAction.getPostsStart());
   API.getAllPosts()
-    .then((res: moduleTypes.Response) => dispatch(blogAction.getPostsSuccess(res.data)))
+    .then((res: Dynamic) => dispatch(blogAction.getPostsSuccess(res.data)))
     .catch(err => dispatch(blogAction.getPostsError(err)));
 };
 
 export const getPostById = (id: string) => (dispatch): void => {
   dispatch(blogAction.detailsPostStart());
   API.getPostById(id)
-    .then((res: moduleTypes.Response) => dispatch(blogAction.detailsPostSuccess(res.data)))
+    .then((res: Dynamic) => dispatch(blogAction.detailsPostSuccess(res.data)))
     .catch(err => dispatch(blogAction.detailsPostError(err)));
 };
 
-export const createPost = (post: moduleTypes.Post) => (dispatch): void => {
+export const createPost = (post: Post) => (dispatch): void => {
   dispatch(blogAction.createPostStart());
   API.createPost(post)
-    .then((res: moduleTypes.Response) => dispatch(blogAction.createPostSuccess(res.data)))
+    .then((res: Dynamic) => dispatch(blogAction.createPostSuccess(res.data)))
     .catch(err => dispatch(blogAction.createPostError(err)));
 };
 

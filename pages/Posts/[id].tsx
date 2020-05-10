@@ -2,8 +2,8 @@ import React, { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { connect } from 'react-redux';
 import SinglePost from '../../components/Post/Post';
-import * as selectorBlog from '../../redux/blog/blogSelectors';
-import * as operationBlog from '../../redux/blog/blogOperations';
+import * as selectorsBlog from '../../redux/blog/blogSelectors';
+import * as operationsBlog from '../../redux/blog/blogOperations';
 import { Store, Post } from '../../types/types';
 
 interface Dispatch {
@@ -23,16 +23,16 @@ const PostPage = ({ postById, getPost, deletePost }): JSX.Element => {
     getPost(id);
   }, [getPost, id]);
 
-  return <SinglePost post={postById} deletePost={deletePost} />;
+  return <>{postById && <SinglePost post={postById} deletePost={deletePost} />}</>;
 };
 
 const mapStateToProps = (store: Store): StatePost => ({
-  postById: selectorBlog.getPostById(store),
+  postById: selectorsBlog.getPostById(store),
 });
 
 const mapDispatchToProps = (dispatch: (any) => void): Dispatch => ({
-  getPost: (id: string): void => dispatch(operationBlog.getPostById(id)),
-  deletePost: (id: string): void => dispatch(operationBlog.deletePost(id)),
+  getPost: (id: string): void => dispatch(operationsBlog.getPostById(id)),
+  deletePost: (id: string): void => dispatch(operationsBlog.deletePost(id)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PostPage);

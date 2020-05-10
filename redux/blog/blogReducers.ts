@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
 import types from '../blog/blogTypes';
-import * as moduleTypes from '../../types/types';
+import { Post } from '../../types/types';
 
-const posts = (state = [], action): Array<moduleTypes.Post> => {
+const posts = (state = [], action): Array<Post> => {
   switch (action.type) {
     case types.GET_POSTS_SUCCESS:
       return action.payload.posts;
@@ -18,7 +18,7 @@ const posts = (state = [], action): Array<moduleTypes.Post> => {
   }
 };
 
-const singlePost = (state = null, action): moduleTypes.Post => {
+const singlePost = (state = null, action): Post => {
   switch (action.type) {
     case types.DETAILS_POST_SUCCESS:
       return action.payload.post;

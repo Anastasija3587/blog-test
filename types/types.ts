@@ -4,7 +4,7 @@ export interface Post {
   body: string;
 }
 
-export interface Response {
+export interface Dynamic {
   [key: string]: string | object;
 }
 
